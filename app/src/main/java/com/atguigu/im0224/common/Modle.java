@@ -3,6 +3,7 @@ package com.atguigu.im0224.common;
 import android.content.Context;
 
 import com.atguigu.im0224.modle.bean.UserInfo;
+import com.atguigu.im0224.modle.dao.AccountDAO;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,6 +13,8 @@ import java.util.concurrent.Executors;
  */
 
 public class Modle {
+
+    private AccountDAO accountDAO;
 
     private Modle(){}
 
@@ -25,6 +28,7 @@ public class Modle {
 
     public void init(Context context){
         this.context = context;
+        accountDAO = new AccountDAO(context);
     }
 
     private ExecutorService service = Executors.newCachedThreadPool();
@@ -35,6 +39,11 @@ public class Modle {
 
     //登录成功以后保存用户数据
     public void loginSuccess(UserInfo userInfo) {
+        //添加用户
+        accountDAO.addAccount(userInfo);
+    }
 
+    public AccountDAO getAccountDAO(){
+        return accountDAO;
     }
 }
