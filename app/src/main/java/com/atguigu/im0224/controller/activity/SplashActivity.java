@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.atguigu.im0224.R;
 import com.atguigu.im0224.base.BaseActivity;
+import com.atguigu.im0224.common.Modle;
 import com.hyphenate.chat.EMClient;
 
 public class SplashActivity extends BaseActivity {
@@ -37,7 +38,7 @@ public class SplashActivity extends BaseActivity {
     //选择进入哪个界面
     private void selectChageActivity() {
 
-        new Thread(){
+        /*new Thread(){
             @Override
             public void run() {
                 super.run();
@@ -51,7 +52,22 @@ public class SplashActivity extends BaseActivity {
                     startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                 }
             }
-        }.start();
+        }.start();*/
+
+        Modle.getInstance().getGlobalThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                //是否登录过环信服务器
+                boolean loggedInBefore = EMClient.getInstance().isLoggedInBefore();
+                if (loggedInBefore){
+                    //登录过
+                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                }else{
+                    //没有登录过
+                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                }
+            }
+        });
     }
 
 

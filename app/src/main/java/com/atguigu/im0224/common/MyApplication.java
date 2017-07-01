@@ -23,6 +23,7 @@ public class MyApplication extends Application {
         options.setAcceptInvitationAlways(false);
         EaseUI.getInstance().init(this,options);
 
-
+        //初始化modle
+        Modle.getInstance().init(this);
     }
 }
