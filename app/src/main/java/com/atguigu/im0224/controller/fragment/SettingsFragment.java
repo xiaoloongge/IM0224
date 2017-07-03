@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.atguigu.im0224.R;
 import com.atguigu.im0224.controller.activity.LoginActivity;
 import com.atguigu.im0224.controller.activity.MainActivity;
+import com.atguigu.im0224.utils.UiUtils;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 
@@ -56,6 +58,7 @@ public class SettingsFragment extends Fragment {
                     @Override
                     public void onSuccess() {
                         //清除个人数据
+                        UiUtils.showToast("退出成功");
                         //跳转到登录界面
                         startActivity(new Intent(getActivity(), LoginActivity.class));
                         //把当前界面finsh
@@ -64,7 +67,7 @@ public class SettingsFragment extends Fragment {
 
                     @Override
                     public void onError(int i, String s) {
-
+                        UiUtils.showToast(s);
                     }
 
                     @Override
