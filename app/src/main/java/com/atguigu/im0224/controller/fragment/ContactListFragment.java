@@ -6,19 +6,45 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.atguigu.im0224.R;
+import com.atguigu.im0224.utils.UiUtils;
+import com.hyphenate.easeui.ui.EaseContactListFragment;
 
 /**
  * Created by Administrator on 2017/7/3.
  */
 
-public class ContactListFragment extends Fragment {
+public class ContactListFragment extends EaseContactListFragment {
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("小龙哥");
-        return textView;
+    protected void initView() {
+        super.initView();
+    }
+
+    @Override
+    protected void setUpView() {
+        super.setUpView();
+        View headView = View.inflate(getActivity(), R.layout.head_view,null);
+        LinearLayout groups = (LinearLayout) headView.findViewById(R.id.ll_groups);
+        LinearLayout friends = (LinearLayout) headView.findViewById(R.id.ll_new_friends);
+
+        listView.addHeaderView(headView);
+
+        groups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UiUtils.showToast("groups");
+            }
+        });
+        friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UiUtils.showToast("friends");
+            }
+        });
     }
 }
