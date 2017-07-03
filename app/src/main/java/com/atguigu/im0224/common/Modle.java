@@ -2,6 +2,7 @@ package com.atguigu.im0224.common;
 
 import android.content.Context;
 
+import com.atguigu.im0224.modle.HelperManager;
 import com.atguigu.im0224.modle.bean.UserInfo;
 import com.atguigu.im0224.modle.dao.AccountDAO;
 
@@ -15,6 +16,7 @@ import java.util.concurrent.Executors;
 public class Modle {
 
     private AccountDAO accountDAO;
+    private HelperManager manager;
 
     private Modle(){}
 
@@ -43,9 +45,23 @@ public class Modle {
     public void loginSuccess(UserInfo userInfo) {
         //添加用户
         accountDAO.addAccount(userInfo);
+
+        if (manager != null){
+            manager.close();
+        }
+        //创建HelperManager
+        manager = new HelperManager(context,userInfo.getUsername()+".db");
     }
 
     public AccountDAO getAccountDAO(){
         return accountDAO;
+    }
+
+    /*
+    * 返回HelperManager的对象
+    * */
+    public HelperManager getHelperManager(){
+
+        return manager;
     }
 }
