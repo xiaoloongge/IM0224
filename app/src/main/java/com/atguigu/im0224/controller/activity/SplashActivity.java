@@ -62,9 +62,11 @@ public class SplashActivity extends BaseActivity {
                 if (loggedInBefore){
                     //登录过
                     startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    finish();
                 }else{
                     //没有登录过
                     startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                    finish();
                 }
             }
         });
