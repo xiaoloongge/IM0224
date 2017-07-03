@@ -5,6 +5,7 @@ import android.content.Context;
 import com.atguigu.im0224.modle.HelperManager;
 import com.atguigu.im0224.modle.bean.UserInfo;
 import com.atguigu.im0224.modle.dao.AccountDAO;
+import com.atguigu.im0224.utils.SPUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -51,6 +52,9 @@ public class Modle {
         }
         //创建HelperManager
         manager = new HelperManager(context,userInfo.getUsername()+".db");
+
+        //初始化SPUtils
+        SPUtils.getSpUtils().init(context,userInfo.getUsername());
     }
 
     public AccountDAO getAccountDAO(){
