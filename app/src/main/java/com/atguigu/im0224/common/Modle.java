@@ -29,6 +29,8 @@ public class Modle {
     public void init(Context context){
         this.context = context;
         accountDAO = new AccountDAO(context);
+        //初始化全局监听
+        new GlobalListener(context);
     }
 
     private ExecutorService service = Executors.newCachedThreadPool();
