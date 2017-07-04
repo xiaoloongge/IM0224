@@ -47,7 +47,7 @@ public class ContactListFragment extends EaseContactListFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             //添加或者删除好友以后调用此方法
-
+            refreshData();
         }
     };
 
