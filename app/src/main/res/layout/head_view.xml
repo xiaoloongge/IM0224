@@ -28,21 +28,4 @@
             android:background="@android:drawable/ic_notification_overlay"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_groups"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@mipmap/em_create_group"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="群组"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"/>
-        />
-    </LinearLayout>
 </LinearLayout>

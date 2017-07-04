@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.atguigu.im0224.R;
 import com.atguigu.im0224.base.BaseActivity;
 import com.atguigu.im0224.common.Modle;
+import com.atguigu.im0224.modle.bean.UserInfo;
 import com.hyphenate.chat.EMClient;
 
 public class SplashActivity extends BaseActivity {
@@ -61,6 +62,9 @@ public class SplashActivity extends BaseActivity {
                 boolean loggedInBefore = EMClient.getInstance().isLoggedInBefore();
                 if (loggedInBefore){
                     //登录过
+                    //初始化登录成功后的操作
+                    String currentUser = EMClient.getInstance().getCurrentUser();
+                    Modle.getInstance().loginSuccess(new UserInfo(currentUser,currentUser));
                     startActivity(new Intent(SplashActivity.this,MainActivity.class));
                     finish();
                 }else{

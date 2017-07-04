@@ -1,6 +1,7 @@
 package com.atguigu.im0224.common;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atguigu.im0224.modle.HelperManager;
 import com.atguigu.im0224.modle.bean.UserInfo;
@@ -32,6 +33,7 @@ public class Modle {
     public void init(Context context){
         this.context = context;
         accountDAO = new AccountDAO(context);
+        Log.d("invited", "init: ");
         //初始化全局监听
         new GlobalListener(context);
     }

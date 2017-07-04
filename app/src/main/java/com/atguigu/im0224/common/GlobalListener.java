@@ -17,7 +17,7 @@ import com.hyphenate.chat.EMClient;
 
 public class GlobalListener {
 
-    private final LocalBroadcastManager manager;
+    private  LocalBroadcastManager manager;
 
     public GlobalListener(Context context){
 
@@ -40,18 +40,22 @@ public class GlobalListener {
         //收到好友邀请  别人加你
         @Override
         public void onContactInvited(String username, String reason) {
-
+            Log.d("invited", "onContactInvited: "+username);
             InvitationInfo invitationInfo = new InvitationInfo();
             invitationInfo.setReason(reason);
             invitationInfo.setUserInfo(new UserInfo(username,username));
+            invitationInfo.setStatus(InvitationInfo.InvitationStatus.NEW_INVITE);
             //添加InvitationInfo
             Modle.getInstance().getHelperManager()
                     .getInvitationDAO()
                     .addInvitation(invitationInfo);
             //保存小红点状态
             SPUtils.getSpUtils().save(SPUtils.NEW_INVITE,true);
+
             //发送广播
             manager.sendBroadcast(new Intent(Constant.NEW_INVITE_CHANGE));
+
+            Log.d("invited", "onContactInvited: "+manager);
         }
 
         //好友请求被同意  你加别人的时候 别人同意了
