@@ -85,4 +85,13 @@ public class ContactListFragment extends EaseContactListFragment {
             }
         });
     }
+
+    /*
+    * 当界面再次展示的时候进行回调
+    * */
+    @Override
+    public void onResume() {
+        super.onResume();
+        isShowRedView();
+    }
 }
