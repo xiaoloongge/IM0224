@@ -4,22 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.atguigu.im0224.R;
 import com.atguigu.im0224.common.Constant;
+import com.atguigu.im0224.controller.activity.AddContactActivity;
+import com.atguigu.im0224.controller.activity.InviteActivity;
 import com.atguigu.im0224.utils.SPUtils;
-import com.atguigu.im0224.utils.UiUtils;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 
 /**
@@ -86,7 +81,7 @@ public class ContactListFragment extends EaseContactListFragment {
         friends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UiUtils.showToast("groups");
+                startActivity(new Intent(getActivity(),InviteActivity.class));
             }
         });
     }
