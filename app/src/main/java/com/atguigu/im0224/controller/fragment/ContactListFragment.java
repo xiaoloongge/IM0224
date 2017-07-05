@@ -22,6 +22,7 @@ import com.atguigu.im0224.modle.bean.UserInfo;
 import com.atguigu.im0224.utils.SPUtils;
 import com.atguigu.im0224.utils.UiUtils;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 import com.hyphenate.exceptions.HyphenateException;
@@ -59,6 +60,15 @@ public class ContactListFragment extends EaseContactListFragment {
     @Override
     protected void initView() {
         super.initView();
+
+        setContactListItemClickListener(new EaseContactListItemClickListener() {
+            @Override
+            public void onListItemClicked(EaseUser user) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                intent.putExtra(EaseConstant.EXTRA_USER_ID,user.getUsername());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
